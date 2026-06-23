@@ -8,13 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vanguard.model.User;
 
 @RestController
-@RequestMapping("/api/v1/users") 
+@RequestMapping("/") 
 public class UserController {
-    @GetMapping("/{userId}")
+    @GetMapping("/api/v1/users/{userId}")
     public User getUser(@PathVariable Long userId) {
     	System.out.println("user ID = "+userId);
     	User user = new User(userId, "Arsh");
         //return new User(userId, "Arsh"); // Returns JSON directly
     	return user;
+    }
+    
+    @GetMapping("/")
+    public String testing() {
+    	System.out.println("testing");
+    	//return new User(userId, "Arsh"); // Returns JSON directly
+    	return "testing method called perfectly";
     }
 }
