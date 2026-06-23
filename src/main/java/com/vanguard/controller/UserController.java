@@ -1,5 +1,6 @@
 package com.vanguard.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +17,20 @@ public class UserController {
         return new User(userId, "Arsh");
     }
 
+
     @GetMapping("/health")
-    public String health() {
-        return "OK";
-    }
+    public ResponseEntity<String> health() {
+    	return ResponseEntity.ok()
+            .header("Content-Type", "text/plain")
+            .body("OK");
+}
+
 	
 	@GetMapping("/")
-    public String testing() {
-        return "OK";
+    public ResponseEntity<String> testing() {
+    	return ResponseEntity.ok()
+                .header("Content-Type", "text/plain")
+                .body("OK");
     }
 	
 }
