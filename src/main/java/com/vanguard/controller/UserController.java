@@ -1,5 +1,7 @@
 package com.vanguard.controller;
 
+import java.net.InetAddress;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,11 +13,17 @@ import com.vanguard.model.User;
 @RestController
 public class UserController {
 
-    @GetMapping("/api/v1/users/{userId}")
+    /*@GetMapping("/api/v1/users/{userId}")
     public User getUser(@PathVariable Long userId) {
         System.out.println("user ID = " + userId);
         return new User(userId, "Arsh");
-    }
+    }*/
+	
+	@GetMapping("/api/v1/users/{userId}")
+	public String getUser(@PathVariable Integer userId) throws Exception {
+	    String instanceId = InetAddress.getLocalHost().getHostName();
+	    return "User ID = " + userId + " | Served by: " + instanceId;
+	}
 
 
     @GetMapping("/health")
